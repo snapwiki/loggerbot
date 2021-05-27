@@ -1,8 +1,9 @@
 import discord
 from mw_api_client import Wiki
+from os import environ
 
 wiki = Wiki("https://snapwiki.miraheze.org/w/api.php", "Snap! Wiki Technical Change Logger/1.0.0")
-wiki.clientlogin("R4356thBot", PASSWORD)
+wiki.clientlogin("R4356thBot", environ.WIKI_PASSWORD)
 print("Logged in to wiki.")
 
 class Bot(discord.Client):
@@ -19,4 +20,4 @@ class Bot(discord.Client):
             page.edit(pagecontent, summ)
 
 client = Bot()
-client.run(DISCORD_TOKEN)
+client.run(environ.DISCORD_TOKEN)
